@@ -28,39 +28,23 @@ DerivedData/
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
-# Swift Package Manager
-
 # Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-# .swiftpm
+
+*.xcodeproj
+.swiftpm
 
 .build/
 
-#
 # Pods/
 
-# *.xcworkspace
+*.xcworkspace
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build/
 
 # Accio dependency management
 Dependencies/
 .accio/
 
 
-Packages
-.build
 DerivedData/
 .DS_Store
 db.sqlite
