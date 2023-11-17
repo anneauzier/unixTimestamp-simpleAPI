@@ -54,5 +54,3 @@ If the date conversion fails, and error its generated indicating that the date f
 let error = ErrorRequested(error: "Formato de data inválido. Use dd/mm/yyyy.")
 return error.encodeResponse(status: .badRequest, for: req)
 ```
-
-                                                                                                     |
