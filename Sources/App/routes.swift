@@ -1,12 +1,11 @@
 import Vapor
 
-// Content -> encode / decode facilmente estruturas codificáveis para mensagens HTTP
 struct DataRequest: Content {
     let date: String
 }
 
 struct ConvertedResponse: Content {
-    let unixTimestamp: Int
+    let unix_timestamp: Int
 }
 
 struct ErrorRequested: Content {
@@ -14,8 +13,8 @@ struct ErrorRequested: Content {
 }
 
 func routes(_ app: Application) throws {
-    // EventLoopFuture -> Referência a um valor que pode ainda não estar disponível.
     app.post("converter") { req -> EventLoopFuture<Response> in
+
         let requestData = try req.content.decode(DataRequest.self)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/mm/yyyy"
@@ -24,9 +23,9 @@ func routes(_ app: Application) throws {
             let error = ErrorRequested(error: "Formato de data inválido. Use dd/mm/yyyy.")
             return error.encodeResponse(status: .badRequest, for: req)
         }
-        
+
         let unixTimestamp = Int(date.timeIntervalSince1970)
-        let response = ConvertedResponse(unixTimestamp: unixTimestamp)
+        let response = ConvertedResponse(unix_timestamp: unixTimestamp)
         
         return response.encodeResponse(status: .ok, for: req)
     }
